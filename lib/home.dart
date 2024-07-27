@@ -25,9 +25,30 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     super.initState();
-    _textControllers = List.generate(_images.length, (_) => []);
-    _textPositions = List.generate(_images.length, (_) => []);
-    _textSizes = List.generate(_images.length, (_) => []);
+    // Initialize text controllers, positions, and sizes with some default values
+    _textControllers = List.generate(_images.length, (index) {
+      if (index == 0) {
+        return [
+          TextEditingController(text: "Hello world this is the initial part of any coding language")
+        ]; // Add initial text to the first text area
+      } else {
+        return [];
+      }
+    });
+    _textPositions = List.generate(_images.length, (index) {
+      if (index == 0) {
+        return [Offset(50, 50)]; // Set initial position for the text area
+      } else {
+        return [];
+      }
+    });
+    _textSizes = List.generate(_images.length, (index) {
+      if (index == 0) {
+        return [Size(200, 50)]; // Set initial size for the text area
+      } else {
+        return [];
+      }
+    });
   }
 
   void _nextPage() {
@@ -129,12 +150,15 @@ class _HomeScreenState extends State<HomeScreen> {
                                     TextField(
                                       controller: _textControllers[index][i],
                                       style: TextStyle(color: Colors.white),
+                                      maxLines: null, // Allow unlimited lines
+                                      minLines: 1, // Minimum one line
+                                      expands: false, // Allow the text to expand vertically
                                       decoration: InputDecoration(
                                         border: InputBorder.none,
                                         contentPadding: EdgeInsets.all(8),
                                       ),
                                     ),
-                                    // New Delete Icon in Top Right Corner
+                                    // Delete Icon in Top Right Corner
                                     Positioned(
                                       top: -2,
                                       right: -2,
@@ -148,7 +172,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                         iconSize: 20,
                                       ),
                                     ),
-                                    // New Resize Icon in Bottom Right Corner
+                                    // Resize Icon in Bottom Right Corner
                                     Positioned(
                                       bottom: -2,
                                       right: -2,
@@ -156,7 +180,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                         onPanUpdate: (details) {
                                           setState(() {
                                             _textSizes[index][i] = Size(
-                                              _textSizes[index][i].width + details.delta.dx,
+                                              _textSizes[index][i].width,
                                               _textSizes[index][i].height + details.delta.dy,
                                             );
                                           });
@@ -164,7 +188,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                         child: Icon(Icons.zoom_out_map, color: Colors.white, size: 20),
                                       ),
                                     ),
-                                    // New Move Icon in Top Left Corner
+                                    // Move Icon in Top Left Corner
                                     Positioned(
                                       top: -2,
                                       left: -2,
