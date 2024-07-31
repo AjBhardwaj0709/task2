@@ -33,7 +33,7 @@ class _HomeScreenState extends State<HomeScreen> {
             height: 40,
           ),
           SizedBox(height: 80, width: 300, child: BottomBarinitial()),
-          SizedBox(height: 80, width: 300, child: Bottombar()),
+          // SizedBox(height: 80, width: 300, child: Bottombar()),
         ],
       ),
     );
