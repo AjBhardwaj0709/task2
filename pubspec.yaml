@@ -38,6 +38,7 @@ dependencies:
   color_pickr: ^1.0.0+3
   flutter_colorpicker: ^1.1.0
   device_preview: ^1.2.0
+  popover: ^0.3.0+1
 
 dev_dependencies:
   flutter_test:

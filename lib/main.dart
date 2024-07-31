@@ -4,12 +4,15 @@ import 'package:flutter/material.dart';
 
 import 'home.dart';
 
-void main() {
-  runApp(DevicePreview(
-    enabled: !kReleaseMode, // Enable DevicePreview only in debug mode
-    builder: (context) => const MyApp(),
-    // const MyApp(),
-  ));
+// void main() {
+//   runApp(DevicePreview(
+//     enabled: !kReleaseMode, // Enable DevicePreview only in debug mode
+//     builder: (context) => const MyApp(),
+//     // const MyApp(),
+//   ));
+// }
+void main(){
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
